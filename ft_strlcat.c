@@ -5,11 +5,12 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: arsbadal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/08 16:23:04 by arsbadal          #+#    #+#             */
-/*   Updated: 2022/10/08 16:23:06 by arsbadal         ###   ########.fr       */
+/*   Created: 2023/01/20 22:12:03 by arsbadal          #+#    #+#             */
+/*   Updated: 2023/01/20 22:12:15 by arsbadal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
+
 size_t	ft_strlcat(char *dest, const char *src, size_t size)
 {
 	size_t	i1;
@@ -20,7 +21,7 @@ size_t	ft_strlcat(char *dest, const char *src, size_t size)
 	i1 = 0;
 	i2 = 0;
 	g = 0;
-	if(!dest && size == 0)
+	if (!dest && size == 0)
 		return (0);
 	while (dest[i1] != '\0')
 		++i1;

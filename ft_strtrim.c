@@ -1,48 +1,51 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strtrim.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: arsbadal <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/01/20 22:17:06 by arsbadal          #+#    #+#             */
+/*   Updated: 2023/01/20 22:24:54 by arsbadal         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 
-int	search_set(const char *s1, const char *set, int search_pos)
+int	search_set(char c, const char *set)
 {
-	int	check_index;
+	size_t	i;
 
-	check_index = 0;
-	while (s1[search_pos + check_index]
-		&& s1[search_pos + check_index] == set[check_index])
-		check_index++;
-	if (set[check_index] == '\0')
-		return (check_index);
+	i = 0;
+	while (set[i])
+	{
+		if (set[i] == c)
+			return (1);
+		i++;
+	}
 	return (0);
 }
 
 char	*ft_strtrim(const char *s1, const char *set)
 {
-	int		start;
-	int		end;
-	int		i;
-	int		s1_len;
+	size_t	start;
+	size_t	end;
 	char	*str;
 
-	i = 0;
-	s1_len = ft_strlen(s1);
-	start = search_set(s1, set, 0);
-	end = s1_len - search_set(s1, set, (s1_len - ft_strlen(set)));
-	str = malloc(sizeof(char) * (end - start) + sizeof(char));
-	if (!str)
+	if (!s1)
 		return (NULL);
-	while (start < end)
+	end = ft_strlen(s1) - 1;
+	start = 0;
+	while (s1[start] && search_set(s1[start], set))
 	{
-		str[i] = s1[start];
-		i++;
 		start++;
 	}
-	str[i++] = '\0';
+	while (s1[end] && search_set(s1[end], set))
+	{
+		end--;
+	}
+	str = ft_substr(s1, (unsigned int)start, (end - start + 1));
+	if (!str)
+		return (NULL);
 	return (str);
 }
-
-// int main()
-// {
-// 	char *s1 = "Hello \t  Please\n Trim me !";
-// 	char *s2 = "Hello \t  Please\n Trim me !";
-// 	char *ret = ft_strtrim(s1, " \n\t");
-// 	printf("|%s|\n", ret);
-// 	return (0);
-// }

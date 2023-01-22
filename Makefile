@@ -16,7 +16,9 @@ SRC = ft_atoi.c ft_bzero.c ft_calloc.c ft_isalnum.c ft_isalpha.c \
 		ft_strlen.c ft_strmapi.c ft_strncmp.c ft_strnstr.c ft_strrchr.c \
 		ft_strtrim.c ft_substr.c ft_tolower.c ft_toupper.c
 
-SRC_BONUS = $(wildcard ft_lst*.c)
+SRC_BONUS = ft_lstadd_back.c  ft_lstadd_front.c  ft_lstclear.c \
+			ft_lstdelone.c  ft_lstiter.c  ft_lstlast.c  ft_lstmap.c \
+			ft_lstnew.c  ft_lstsize.c
 
 # Object Files
 OBJ = $(patsubst %.c, %.o, $(SRC))
@@ -25,11 +27,11 @@ OBJ_BONUS = $(patsubst %.c, %.o, $(SRC_BONUS))
 # Rules
 all: $(NAME)
 
-$(NAME): $(OBJ)
+$(NAME): $(OBJ) libft.h Makefile
 	$(AR) $@ $(OBJ)
 	$(RUN) $@
 
-bonus: $(OBJ) $(OBJ_BONUS)
+bonus: $(OBJ) $(OBJ_BONUS) libft.h Makefile
 	$(AR) $(NAME) $(OBJ) $(OBJ_BONUS)
 	$(RUN) $(NAME)
 

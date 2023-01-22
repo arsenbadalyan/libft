@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_itoa.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: arsbadal <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/01/20 22:06:22 by arsbadal          #+#    #+#             */
+/*   Updated: 2023/01/20 22:06:24 by arsbadal         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 
 int	get_num_length(int n)
@@ -15,14 +27,14 @@ int	get_num_length(int n)
 	return (length);
 }
 
-char *allocate_memory_for_number(int n, int num_length)
+char	*allocate_memory_for_number(int n, int num_length)
 {
-	char *str;
+	char	*str;
 
-	if(n < 0)
+	if (n < 0)
 		num_length++;
 	str = (char *)malloc((sizeof(char) * num_length + 1));
-	if(!str)
+	if (!str)
 		return (NULL);
 	return (str);
 }
